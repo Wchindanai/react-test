@@ -1,6 +1,8 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/totemic-aquifer-232406/myimage', '.']
+  args: ['build', '-t', 'gcr.io/totemic-aquifer-232406/myimage:$PROJECT_ID', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ["push", "gcr.io/totemic-aquifer-232406/myimage:$PROJECT_ID"]
 - name: 'gcr.io/cloud-builders/kubectl'
   args:
   - set
@@ -8,4 +10,6 @@ steps:
   - deployment
   - web-deployment
   - nginx=gcr.io/totemic-aquifer-232406/myimage
-images: ['gcr.io/totemic-aquifer-232406/myimage']
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1-a'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=standard-cluster-1'
