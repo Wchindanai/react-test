@@ -1,5 +1,7 @@
 FROM node
 
+RUN ls
+
 RUN npm install
 
 RUN npm start
