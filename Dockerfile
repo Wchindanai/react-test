@@ -1,8 +1,8 @@
 FROM node
 
-WORKDIR app
+WORKDIR /var/www/app
 
-COPY . app/
+COPY . .
 
 RUN ls
 
