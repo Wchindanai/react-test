@@ -1,5 +1,7 @@
 FROM node
 
+COPY . .
+
 RUN ls
 
 RUN npm install
