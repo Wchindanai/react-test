@@ -1,4 +1,11 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/totemic-aquifer-232406/myimage', '.']
+- name: 'gcr.io/cloud-builders/kubectl'
+  args:
+  - set
+  - image
+  - deployment
+  - web-deployment
+  - nginx=gcr.io/totemic-aquifer-232406/myimage
 images: ['gcr.io/totemic-aquifer-232406/myimage']
